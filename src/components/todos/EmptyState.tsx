@@ -1,14 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { css } from "@emotion/react";
 
-const TabsStyle = css`
+const emptyStateStyle = css`
   text-align: center;
   margin-bottom: 20px;
 `;
 
-const Tabs = () => {
-  return <div css={TabsStyle}></div>;
+const EmptyState = () => {
+  return (
+    <div css={emptyStateStyle}>
+      <h2>할 일이 없어요!</h2>
+    </div>
+  );
 };
 
-export default Tabs;
+export default EmptyState;

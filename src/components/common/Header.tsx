@@ -1,11 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { css } from "@emotion/react";
-
-const headerStyle = css`
-  text-align: center;
-  margin-bottom: 20px;
-`;
 
 const Header = () => {
   return (
@@ -16,3 +10,8 @@ const Header = () => {
 };
 
 export default Header;
+
+const headerStyle = css`
+  text-align: center;
+  margin-bottom: 20px;
+`;

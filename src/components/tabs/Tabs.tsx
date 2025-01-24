@@ -1,14 +1,34 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import { css } from "@emotion/react";
 
-const TabsStyle = css`
-  text-align: center;
-  margin-bottom: 20px;
+const tabsStyle = css`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
 `;
 
+const TabData = [
+  { id: 1, name: "ALL" },
+  { id: 2, name: "To Do" },
+  { id: 3, name: "Done" },
+];
+
 const Tabs = () => {
-  return <div css={TabsStyle}></div>;
+  const [currentTabId, setCurrentTabId] = useState<number>(1);
+
+  return (
+    <div css={tabsStyle}>
+      {TabData.map((tab, index) => (
+        <button key={index.toString()} onClick={() => setCurrentTabId(tab.id)}>
+          {tab.name}
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default Tabs;

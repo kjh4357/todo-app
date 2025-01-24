@@ -1,7 +1,6 @@
-import React from "react";
-import LayoutRecoil from "./layout.recoil";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "myfair front pre-course",
   description: "todolist",
 };
@@ -13,9 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <LayoutRecoil>{children}</LayoutRecoil>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
