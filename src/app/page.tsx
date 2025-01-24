@@ -1,10 +1,19 @@
 import React from "react";
-import TodoUserListPage from "../components/pages/TodoUserListPage";
+import Layout from "./layout";
+import Header from "../components/common/Header";
+import InputField from "../components/Input/InputField";
+import Tabs from "../components/tabs/Tabs";
+import TodoList from "../components/todos/TodoList";
 
-interface Props {}
-
-const Page = ({}: Props) => {
-  return <TodoUserListPage />;
+const Page = () => {
+  return (
+    <Layout>
+      <Header />
+      <InputField />
+      <Tabs />
+      <TodoList />
+    </Layout>
+  );
 };
 
 export default Page;
