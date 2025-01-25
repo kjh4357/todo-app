@@ -5,13 +5,14 @@ import SearchBar from "../components/common/SearchBar";
 import Tabs from "../components/common/Tabs";
 import TodoList from "../components/todos/TodoList";
 import { css } from "@emotion/react";
-import "../styles/globals.css";
 import { useTodoStore } from "../hooks/useTodoStore";
 import { useState } from "react";
+import { TODO_TYPE_ALL } from "../common/constants";
+import "../styles/globals.css";
 
 const Page = () => {
   const { addTodo } = useTodoStore();
-  const [tab, setTab] = useState<TodoType>("ALL");
+
   const handleAddTodo = (title: string) => {
     addTodo(title);
   };
@@ -22,8 +23,8 @@ const Page = () => {
         <Header />
         <SearchBar onSubmit={handleAddTodo} />
         <div css={todoWrapperStyle}>
-          <Tabs activeTab={tab} onChange={setTab} />
-          <TodoList filter={tab} />
+          <Tabs />
+          <TodoList />
         </div>
       </div>
     </>

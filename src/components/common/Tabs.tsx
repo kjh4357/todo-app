@@ -3,21 +3,19 @@
 
 import { useState } from "react";
 import { css } from "@emotion/react";
+import { TAB_TYPES } from "../../common/constants";
+import { useTodoStore } from "../../hooks/useTodoStore";
+const TabData = Array.isArray(TAB_TYPES) ? TAB_TYPES : [];
 
-const TabData = ["ALL", "To do", "Done"];
-
-interface TabsProps {
-  activeTab: TodoType;
-  onChange: (tab: TodoType) => void;
-}
-const Tabs = ({ activeTab, onChange }: TabsProps) => {
+const Tabs = () => {
+  const { activeTab, setTab } = useTodoStore();
   return (
     <div css={tabsStyle}>
       {TabData.map((tab, index) => (
         <button
           className={activeTab === tab ? "active" : ""}
           key={index.toString()}
-          onClick={() => onChange(tab as TodoType)}
+          onClick={() => setTab(tab as TodoType)}
         >
           {tab}
         </button>

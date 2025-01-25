@@ -3,18 +3,18 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import IconCheck from "../../assets/images/icons/ico_check.svg";
 import IconDelete from "../../assets/images/icons/ico_delete.svg";
+import { useTodoStore } from "../../hooks/useTodoStore";
 const TodoItem = ({ todo }: { todo: TodoProps }) => {
-  const [todos, setTodos] = useState<TodoProps[]>([]);
-
+  const { toggleTodo, removeTodo } = useTodoStore();
   return (
     <TodoListItem>
-      <Button onClick={() => {}}>
+      <Button onClick={() => toggleTodo(todo.id)}>
         <Checkbox completed={todo.completed}>
           {todo.completed && <IconCheck fill="#fff" width={20} height={20} />}
         </Checkbox>
         <Title completed={todo.completed}>{todo.title}</Title>
       </Button>
-      <DeleteButton>
+      <DeleteButton onClick={() => removeTodo(todo.id)}>
         <IconDelete fill="#b9b9b9" width={24} height={24} />
       </DeleteButton>
     </TodoListItem>
