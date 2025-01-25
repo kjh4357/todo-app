@@ -7,11 +7,19 @@ import TodoList from "../components/todos/TodoList";
 import { css } from "@emotion/react";
 import { useTodoStore } from "../hooks/useTodoStore";
 import { useState } from "react";
-import { TODO_TYPE_ALL } from "../common/constants";
+import { TAB_TYPES, TODO_TYPE_ALL } from "../common/constants";
 import "../styles/globals.css";
+
+const TodoTabData = Array.isArray(TAB_TYPES)
+  ? TAB_TYPES.map((data, index) => ({ id: index, name: data }))
+  : [];
 
 const Page = () => {
   const { addTodo } = useTodoStore();
+  const [activeTab, setActiveTab] = useState({
+    id: TodoTabData[0].id,
+    name: TodoTabData[0].name,
+  });
 
   const handleAddTodo = (title: string) => {
     addTodo(title);
@@ -23,8 +31,12 @@ const Page = () => {
         <Header />
         <SearchBar onSubmit={handleAddTodo} />
         <div css={todoWrapperStyle}>
-          <Tabs />
-          <TodoList />
+          <Tabs
+            activeTab={activeTab}
+            tabData={TodoTabData}
+            onClickTab={setActiveTab}
+          />
+          <TodoList activeTab={activeTab} />
         </div>
       </div>
     </>

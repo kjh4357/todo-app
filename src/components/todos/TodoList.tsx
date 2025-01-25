@@ -7,20 +7,21 @@ import TodoItem from "./TodoItem";
 import EmptyState from "./EmptyState";
 import { useTodoStore } from "../../hooks/useTodoStore";
 import { TODO_TYPE_DONE, TODO_TYPE_TODO } from "../../common/constants";
+import Spinner from "../common/Spinner";
 
-const TodoList = () => {
-  const { todos, isLoading, activeTab } = useTodoStore();
+const TodoList = ({ activeTab }: { activeTab: Tab }) => {
+  const { todos, isLoading } = useTodoStore();
 
   const filteredTodos =
     todos.length > 0
       ? todos.filter((todo) => {
-          if (activeTab === TODO_TYPE_TODO) return !todo.completed;
-          if (activeTab === TODO_TYPE_DONE) return todo.completed;
+          if (activeTab.name === TODO_TYPE_TODO) return !todo.completed;
+          if (activeTab.name === TODO_TYPE_DONE) return todo.completed;
           return true;
         })
       : [];
   if (isLoading) {
-    return <div css={SpinnerStyle}>로딩 중...</div>;
+    return <Spinner />;
   }
   return (
     <div css={TodoListStyle}>
@@ -31,7 +32,7 @@ const TodoList = () => {
             <TodoItem key={index.toString()} todo={todo} />
           ))
         ) : (
-          <EmptyState />
+          <EmptyState activeTab={activeTab} />
         )}
       </ul>
     </div>
@@ -48,12 +49,4 @@ const TodoListStyle = css`
     line-height: 28px;
     color: #000;
   }
-`;
-const SpinnerStyle = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  font-size: 18px;
-  color: #555;
 `;

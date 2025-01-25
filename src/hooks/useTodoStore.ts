@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { TODO_TYPE_ALL } from "../common/constants";
 
 interface TodoProps {
   id: number;
@@ -9,26 +8,22 @@ interface TodoProps {
 }
 
 interface TodoState {
-  activeTab: TodoType;
   todos: TodoProps[];
   isLoading: boolean;
-  setTab: (newTab: TodoType) => void;
   setLoading: (loading: boolean) => void;
   addTodo: (title: string) => void;
   toggleTodo: (id: number) => void;
   removeTodo: (id: number) => void;
 }
 
-let todoId = 1;
-
 export const useTodoStore = create<TodoState>()(
   persist(
     (set, get) => ({
-      setTab: (newTab) => set({ activeTab: newTab }),
       todos: [],
       isLoading: true,
+
       setLoading: (loading: boolean) => set({ isLoading: loading }),
-      activeTab: "ALL",
+
       addTodo: (title: string) => {
         if (title.length > 20) {
           alert("할 일은 20자 이내로 작성해주세요.");
@@ -41,10 +36,13 @@ export const useTodoStore = create<TodoState>()(
           return;
         }
 
+        const newId =
+          todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1;
+
         set((state) => ({
           todos: [
             ...(Array.isArray(state.todos) ? state.todos : []),
-            { id: todoId++, title, completed: false },
+            { id: newId, title, completed: false },
           ],
         }));
       },

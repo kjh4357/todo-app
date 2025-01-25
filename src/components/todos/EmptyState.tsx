@@ -2,11 +2,14 @@
 import { css } from "@emotion/react";
 import { useTodoStore } from "../../hooks/useTodoStore";
 
-const EmptyState = () => {
-  const { tab } = useTodoStore();
+interface EmptyStateProps {
+  activeTab: Tab;
+}
+
+const EmptyState = ({ activeTab }: EmptyStateProps) => {
   return (
     <div css={emptyStateStyle}>
-      {tab === "Done" ? (
+      {activeTab.name === "Done" ? (
         <h2>아직 완료된 목록이 없어요!</h2>
       ) : (
         <h2>아직 할 일이 없어요!</h2>

@@ -1,23 +1,26 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import { useState } from "react";
 import { css } from "@emotion/react";
 import { TAB_TYPES } from "../../common/constants";
-import { useTodoStore } from "../../hooks/useTodoStore";
-const TabData = Array.isArray(TAB_TYPES) ? TAB_TYPES : [];
+import { useState } from "react";
 
-const Tabs = () => {
-  const { activeTab, setTab } = useTodoStore();
+interface TabsProps {
+  activeTab: Tab;
+  tabData: Tab[];
+  onClickTab: (tab: Tab) => void;
+}
+
+const Tabs = ({ activeTab, tabData, onClickTab }: TabsProps) => {
   return (
     <div css={tabsStyle}>
-      {TabData.map((tab, index) => (
+      {tabData.map((tab, index) => (
         <button
-          className={activeTab === tab ? "active" : ""}
-          key={index.toString()}
-          onClick={() => setTab(tab as TodoType)}
+          className={activeTab.id === tab.id ? "active" : ""}
+          key={tab.id.toString()}
+          onClick={() => onClickTab(tab)}
         >
-          {tab}
+          {tab.name}
         </button>
       ))}
     </div>

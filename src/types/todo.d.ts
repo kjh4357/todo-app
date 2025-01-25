@@ -5,3 +5,8 @@ type TodoProps = {
 };
 
 type TodoType = "ALL" | "To Do" | "Done";
+
+interface Tab {
+  id: number;
+  name: string;
+}
