@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 import { css } from "@emotion/react";
+import IcoSpinner from "@/assets/images/icons/ico_spinner.svg";
 const Spinner = () => {
-  return <div css={SpinnerStyle}>로딩 중...</div>;
+  return (
+    <div css={SpinnerStyle}>
+      <IcoSpinner />
+    </div>
+  );
 };
 const SpinnerStyle = css`
   display: flex;

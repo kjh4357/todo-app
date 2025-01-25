@@ -41,9 +41,6 @@ const Page = () => {
         })
       : [];
 
-  if (isLoading) {
-    return <Spinner />;
-  }
   return (
     <div css={layoutStyle}>
       <Header />
@@ -54,7 +51,9 @@ const Page = () => {
           tabData={TodoTabData}
           onClickTab={setActiveTab}
         />
-        {filteredTodos.length > 0 ? (
+        {isLoading ? (
+          <Spinner />
+        ) : filteredTodos.length > 0 ? (
           <TodoList listData={filteredTodos} />
         ) : (
           <EmptyState activeTab={activeTab} />

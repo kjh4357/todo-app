@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Page from "@/app/page";
 import { useTodoStore } from "@/hooks/useTodoStore";
 
-// Mock 내부 컴포넌트
 jest.mock("@/components/layout/Header", () => () => <div>MockHeader</div>);
 jest.mock("@/components/common/SearchBar", () => ({ onSubmit }: any) => (
   <input
@@ -49,7 +48,6 @@ jest.mock("@/components/todos/EmptyState", () => ({ activeTab }: any) => (
 ));
 jest.mock("@/components/common/Spinner", () => () => <div>Loading...</div>);
 
-// Mock useTodoStore
 jest.mock("@/hooks/useTodoStore");
 
 const mockedUseTodoStore = useTodoStore as unknown as jest.Mock;
@@ -100,16 +98,13 @@ describe("Page Component", () => {
   it("탭 전환 시 필터링된 할 일이 올바르게 렌더링되어야 한다", () => {
     render(<Page />);
 
-    // 기본 탭: "All"
     expect(screen.getByText("Task 1")).toBeInTheDocument();
     expect(screen.getByText("Task 2")).toBeInTheDocument();
 
-    // "To Do" 탭 클릭
     fireEvent.click(screen.getByText("To Do"));
     expect(screen.getByText("Task 1")).toBeInTheDocument();
     expect(screen.queryByText("Task 2")).not.toBeInTheDocument();
 
-    // "Done" 탭 클릭
     fireEvent.click(screen.getByText("Done"));
     expect(screen.getByText("Task 2")).toBeInTheDocument();
     expect(screen.queryByText("Task 1")).not.toBeInTheDocument();
