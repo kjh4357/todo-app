@@ -4,8 +4,8 @@
 ---
 ### 실행
 ```
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 ---
 ### 기능 요구사항
