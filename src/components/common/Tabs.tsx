@@ -2,8 +2,11 @@
 "use client";
 
 import { css } from "@emotion/react";
-import { TAB_TYPES } from "../../common/constants";
-import { useState } from "react";
+
+interface Tab {
+  id: number;
+  name: string;
+}
 
 interface TabsProps {
   activeTab: Tab;
@@ -14,10 +17,10 @@ interface TabsProps {
 const Tabs = ({ activeTab, tabData, onClickTab }: TabsProps) => {
   return (
     <div css={tabsStyle}>
-      {tabData.map((tab, index) => (
+      {tabData.map((tab) => (
         <button
+          key={tab.id}
           className={activeTab.id === tab.id ? "active" : ""}
-          key={tab.id.toString()}
           onClick={() => onClickTab(tab)}
         >
           {tab.name}
@@ -39,6 +42,15 @@ const tabsStyle = css`
     font-size: 16px;
     line-height: 24px;
     border-radius: 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
     &.active {
       color: #2182f3;
       background: #ebf4ff;

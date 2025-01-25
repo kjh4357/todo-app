@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useTodoStore } from "../../hooks/useTodoStore";
 
 interface EmptyStateProps {
-  activeTab: Tab;
+  activeTab: TabProps;
 }
 
 const EmptyState = ({ activeTab }: EmptyStateProps) => {

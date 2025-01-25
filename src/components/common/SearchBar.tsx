@@ -18,15 +18,20 @@ const SearchBar = ({ onSubmit }: SearchBarProps) => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div css={inputFieldStyle}>
       <input
         type="text"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="할 일을 입력하세요 (20자 이내)"
+        placeholder="할 일을 입력해 주세요"
         maxLength={20}
+        aria-label="할 일 입력"
       />
     </div>
   );

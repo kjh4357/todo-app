@@ -6,7 +6,7 @@ type TodoProps = {
 
 type TodoType = "ALL" | "To Do" | "Done";
 
-interface Tab {
+interface TabProps {
   id: number;
   name: string;
 }

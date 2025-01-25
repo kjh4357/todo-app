@@ -10,11 +10,18 @@ const TodoItem = ({ todo }: { todo: TodoProps }) => {
     <TodoListItem>
       <Button onClick={() => toggleTodo(todo.id)}>
         <Checkbox completed={todo.completed}>
-          {todo.completed && <IconCheck fill="#fff" width={20} height={20} />}
+          {todo.completed && (
+            <IconCheck
+              data-testid="check-icon"
+              fill="#fff"
+              width={20}
+              height={20}
+            />
+          )}
         </Checkbox>
         <Title completed={todo.completed}>{todo.title}</Title>
       </Button>
-      <DeleteButton onClick={() => removeTodo(todo.id)}>
+      <DeleteButton onClick={() => removeTodo(todo.id)} aria-label="삭제">
         <IconDelete fill="#b9b9b9" width={24} height={24} />
       </DeleteButton>
     </TodoListItem>
