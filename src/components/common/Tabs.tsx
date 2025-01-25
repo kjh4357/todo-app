@@ -4,13 +4,6 @@
 import { useState } from "react";
 import { css } from "@emotion/react";
 
-const tabsStyle = css`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-`;
-
 const TabData = [
   { id: 1, name: "ALL" },
   { id: 2, name: "To Do" },
@@ -23,7 +16,11 @@ const Tabs = () => {
   return (
     <div css={tabsStyle}>
       {TabData.map((tab, index) => (
-        <button key={index.toString()} onClick={() => setCurrentTabId(tab.id)}>
+        <button
+          className={currentTabId === tab.id ? "active" : ""}
+          key={index.toString()}
+          onClick={() => setCurrentTabId(tab.id)}
+        >
           {tab.name}
         </button>
       ))}
@@ -32,3 +29,20 @@ const Tabs = () => {
 };
 
 export default Tabs;
+
+const tabsStyle = css`
+  display: flex;
+  justify-content: center;
+  button {
+    width: 108px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 12px;
+    &.active {
+      color: #2182f3;
+      background: #ebf4ff;
+    }
+  }
+`;

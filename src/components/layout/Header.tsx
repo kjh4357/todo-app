@@ -13,5 +13,10 @@ export default Header;
 
 const headerStyle = css`
   text-align: center;
-  margin-bottom: 20px;
+  h1 {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 72px;
+    color: #333;
+  }
 `;

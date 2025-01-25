@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-/** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-const InputField = () => {
+const SearchBar = () => {
   const [input, setInput] = useState("");
 
   const handleAddTodo = () => {};
@@ -22,10 +21,14 @@ const InputField = () => {
   );
 };
 
-export default InputField;
+export default SearchBar;
 
 const inputFieldStyle = css`
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  margin-top: 64px;
+  input {
+    width: 100%;
+    padding: 32px;
+    background: #e5e5e5;
+    border-radius: 24px;
+  }
 `;
