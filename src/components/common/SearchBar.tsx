@@ -4,18 +4,29 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-const SearchBar = () => {
-  const [input, setInput] = useState("");
+interface SearchBarProps {
+  onSubmit: (title: string) => void;
+}
 
-  const handleAddTodo = () => {};
+const SearchBar = ({ onSubmit }: SearchBarProps) => {
+  const [value, setValue] = useState("");
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && value.trim()) {
+      onSubmit(value.trim());
+      setValue("");
+    }
+  };
 
   return (
     <div css={inputFieldStyle}>
       <input
         type="text"
-        placeholder="할 일을 입력해 주세요"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="할 일을 입력하세요 (20자 이내)"
+        maxLength={20}
       />
     </div>
   );

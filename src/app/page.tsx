@@ -6,13 +6,20 @@ import Tabs from "../components/common/Tabs";
 import TodoList from "../components/todos/TodoList";
 import { css } from "@emotion/react";
 import "../styles/globals.css";
+import { useTodoStore } from "../hooks/useTodoStore";
 
 const Page = () => {
+  const { addTodo } = useTodoStore();
+
+  const handleAddTodo = (title: string) => {
+    addTodo(title);
+  };
+
   return (
     <>
       <div css={layoutStyle}>
         <Header />
-        <SearchBar />
+        <SearchBar onSubmit={handleAddTodo} />
         <div css={todoWrapperStyle}>
           <Tabs />
           <TodoList />
