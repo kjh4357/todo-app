@@ -7,10 +7,11 @@ import TodoList from "../components/todos/TodoList";
 import { css } from "@emotion/react";
 import "../styles/globals.css";
 import { useTodoStore } from "../hooks/useTodoStore";
+import { useState } from "react";
 
 const Page = () => {
   const { addTodo } = useTodoStore();
-
+  const [tab, setTab] = useState<TodoType>("ALL");
   const handleAddTodo = (title: string) => {
     addTodo(title);
   };
@@ -21,8 +22,8 @@ const Page = () => {
         <Header />
         <SearchBar onSubmit={handleAddTodo} />
         <div css={todoWrapperStyle}>
-          <Tabs />
-          <TodoList />
+          <Tabs activeTab={tab} onChange={setTab} />
+          <TodoList filter={tab} />
         </div>
       </div>
     </>

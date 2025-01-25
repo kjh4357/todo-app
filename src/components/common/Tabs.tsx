@@ -4,24 +4,22 @@
 import { useState } from "react";
 import { css } from "@emotion/react";
 
-const TabData = [
-  { id: 1, name: "ALL" },
-  { id: 2, name: "To Do" },
-  { id: 3, name: "Done" },
-];
+const TabData = ["ALL", "To do", "Done"];
 
-const Tabs = () => {
-  const [currentTabId, setCurrentTabId] = useState<number>(1);
-
+interface TabsProps {
+  activeTab: TodoType;
+  onChange: (tab: TodoType) => void;
+}
+const Tabs = ({ activeTab, onChange }: TabsProps) => {
   return (
     <div css={tabsStyle}>
       {TabData.map((tab, index) => (
         <button
-          className={currentTabId === tab.id ? "active" : ""}
+          className={activeTab === tab ? "active" : ""}
           key={index.toString()}
-          onClick={() => setCurrentTabId(tab.id)}
+          onClick={() => onChange(tab as TodoType)}
         >
-          {tab.name}
+          {tab}
         </button>
       ))}
     </div>

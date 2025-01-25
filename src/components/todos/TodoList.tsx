@@ -9,14 +9,6 @@ import EmptyState from "./EmptyState";
 const TodoList = () => {
   const [Todos, setTodos] = useState<TodoProps[]>([]);
 
-  useEffect(() => {
-    setTodos([
-      { id: 1, title: "아침 산책", completed: false },
-      { id: 2, title: "점심 식사", completed: true },
-      { id: 3, title: "커피 한 잔", completed: false },
-    ]);
-  }, []);
-
   return (
     <div css={TodoListStyle}>
       <p>총 4개</p>

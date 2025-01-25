@@ -3,3 +3,5 @@ type TodoProps = {
   title: string;
   completed: boolean;
 };
+
+type TodoType = "ALL" | "To Do" | "Done";
