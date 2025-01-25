@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Tabs from "../../components/common/Tabs";
+import Tabs from "@/components/common/Tabs";
 import {
   TODO_TYPE_ALL,
   TODO_TYPE_DONE,
   TODO_TYPE_TODO,
-} from "../../common/constants";
+} from "@/common/constants";
 
 const mockOnClickTab = jest.fn();
 

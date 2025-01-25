@@ -1,5 +1,5 @@
 import { act } from "react";
-import { useTodoStore } from "../../hooks/useTodoStore";
+import { useTodoStore } from "@/hooks/useTodoStore";
 
 describe("useTodoStore", () => {
   beforeAll(() => {

@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Page from "../app/page";
-import { useTodoStore } from "../hooks/useTodoStore";
+import Page from "@/app/page";
+import { useTodoStore } from "@/hooks/useTodoStore";
 
 // Mock 내부 컴포넌트
-jest.mock("../components/layout/Header", () => () => <div>MockHeader</div>);
-jest.mock("../components/common/SearchBar", () => ({ onSubmit }: any) => (
+jest.mock("@/components/layout/Header", () => () => <div>MockHeader</div>);
+jest.mock("@/components/common/SearchBar", () => ({ onSubmit }: any) => (
   <input
     type="text"
     placeholder="할 일을 입력해 주세요"
@@ -17,7 +17,7 @@ jest.mock("../components/common/SearchBar", () => ({ onSubmit }: any) => (
   />
 ));
 jest.mock(
-  "../components/common/Tabs",
+  "@/components/common/Tabs",
   () =>
     ({ activeTab, tabData, onClickTab }: any) => (
       <div>
@@ -33,24 +33,24 @@ jest.mock(
       </div>
     )
 );
-jest.mock("../components/todos/TodoList", () => ({ listData }: any) => (
+jest.mock("@/components/todos/TodoList", () => ({ listData }: any) => (
   <ul>
     {listData.map((todo: any) => (
       <li key={todo.id}>{todo.title}</li>
     ))}
   </ul>
 ));
-jest.mock("../components/todos/EmptyState", () => ({ activeTab }: any) => (
+jest.mock("@/components/todos/EmptyState", () => ({ activeTab }: any) => (
   <div>
     {activeTab.name === "Done"
       ? "아직 완료된 목록이 없어요!"
       : "아직 할 일이 없어요!"}
   </div>
 ));
-jest.mock("../components/common/Spinner", () => () => <div>Loading...</div>);
+jest.mock("@/components/common/Spinner", () => () => <div>Loading...</div>);
 
 // Mock useTodoStore
-jest.mock("../hooks/useTodoStore");
+jest.mock("@/hooks/useTodoStore");
 
 const mockedUseTodoStore = useTodoStore as unknown as jest.Mock;
 

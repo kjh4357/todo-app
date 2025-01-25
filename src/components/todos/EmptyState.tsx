@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useTodoStore } from "../../hooks/useTodoStore";
 
 interface EmptyStateProps {
   activeTab: TabProps;

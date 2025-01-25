@@ -1,16 +1,17 @@
 /** @jsxImportSource @emotion/react */
 "use client";
-import Header from "../components/layout/Header";
-import SearchBar from "../components/common/SearchBar";
-import Tabs from "../components/common/Tabs";
-import TodoList from "../components/todos/TodoList";
+
+import Header from "@/components/layout/Header";
+import SearchBar from "@/components/common/SearchBar";
+import Tabs from "@/components/common/Tabs";
+import TodoList from "@/components/todos/TodoList";
+import EmptyState from "@/components/todos/EmptyState";
+import Spinner from "@/components/common/Spinner";
 import { css } from "@emotion/react";
-import { useTodoStore } from "../hooks/useTodoStore";
+import { useTodoStore } from "@/hooks/useTodoStore";
 import { useState } from "react";
-import { TAB_TYPES, TODO_TYPE_DONE, TODO_TYPE_TODO } from "../common/constants";
-import "../styles/globals.css";
-import EmptyState from "../components/todos/EmptyState";
-import Spinner from "../components/common/Spinner";
+import { TAB_TYPES, TODO_TYPE_DONE, TODO_TYPE_TODO } from "@/common/constants";
+import "@/styles/globals.css";
 
 interface Tab {
   id: number;

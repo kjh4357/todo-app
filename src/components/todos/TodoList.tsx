@@ -2,7 +2,7 @@
 "use client";
 
 import { css } from "@emotion/react";
-import TodoItem from "./TodoItem";
+import TodoItem from "@/components/todos/TodoItem";
 
 interface TodoListProps {
   listData: TodoProps[];

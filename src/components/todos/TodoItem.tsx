@@ -1,9 +1,8 @@
-/** @jsxImportSource @emotion/react */
-import { useState } from "react";
 import styled from "@emotion/styled";
-import IconCheck from "../../assets/images/icons/ico_check.svg";
-import IconDelete from "../../assets/images/icons/ico_delete.svg";
-import { useTodoStore } from "../../hooks/useTodoStore";
+import IconCheck from "@/assets/images/icons/ico_check.svg";
+import IconDelete from "@/assets/images/icons/ico_delete.svg";
+import { useTodoStore } from "@/hooks/useTodoStore";
+
 const TodoItem = ({ todo }: { todo: TodoProps }) => {
   const { toggleTodo, removeTodo } = useTodoStore();
   return (

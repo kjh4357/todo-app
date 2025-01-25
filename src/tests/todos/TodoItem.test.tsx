@@ -1,14 +1,14 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import TodoItem from "../../components/todos/TodoItem";
-import { useTodoStore } from "../../hooks/useTodoStore";
+import TodoItem from "@/components/todos/TodoItem";
+import { useTodoStore } from "@/hooks/useTodoStore";
 
 // Mock SVG components
-jest.mock("../../assets/images/icons/ico_check.svg", () => () => (
+jest.mock("@/assets/images/icons/ico_check.svg", () => () => (
   <span data-testid="check-icon">MockCheckIcon</span>
 ));
 
 // Mock useTodoStore
-jest.mock("../../hooks/useTodoStore");
+jest.mock("@/hooks/useTodoStore");
 
 const mockedUseTodoStore = useTodoStore as unknown as jest.Mock;
 

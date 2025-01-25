@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import TodoList from "../../components/todos/TodoList";
+import TodoList from "@/components/todos/TodoList";
 
 // Mock TodoItem 컴포넌트
-jest.mock("../../components/todos/TodoItem", () => {
+jest.mock("@/components/todos/TodoItem", () => {
   return ({ todo }: { todo: TodoProps }) => (
     <li data-testid="todo-item">{todo.title}</li>
   );
